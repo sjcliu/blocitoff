@@ -12,6 +12,8 @@ source 'https://rubygems.org'
  # #2
  group :development do
    gem 'sqlite3'
+   gem 'pry'
+   gem 'quiet_assets'
  end
 
  # Use SCSS for stylesheets

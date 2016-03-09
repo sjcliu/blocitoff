@@ -7,17 +7,19 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:item])
+    @item = Item.find(params[:id])
 
     if @item.destroy
       flash[:notice] = "Item was deleted"
     else
       flash[:notice] = "Item couldn't be deleted. Try again."
     end
-    redirect_to root_url
+
 
     respond_to do |format|
-      format.html
+      format.html do
+        redirect_to root_url
+      end
       format.js
     end
   end

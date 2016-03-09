@@ -1,2 +1,21 @@
 <h1><strong>Welcome to Blocitoff</strong></h1>
 <p id="index-title"><strong>A self-destructing to-do list to keep you focused on the things that really matter.</strong></p>
+
+<div class="createbox">
+  <%= form_for Item.new do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
+<% if current_user %>
+  <table class="table table-bordered">
+    <% current_user.items.each do |i| %>
+    <tr>
+      <th> <%= i.title %></th>
+      <td><%= i.distance_of_time_in_words %></td>
+      <td><%= link_to "Delete", @item, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
+    <% end %>
+  </tr>
+  </table>
+<% end %>
